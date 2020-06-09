@@ -1,3 +1,5 @@
 db.sqlite
 build/
 node_modules/
+.idea/
+*.iml

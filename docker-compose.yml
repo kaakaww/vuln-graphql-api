@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  base:
+    image: stackhawk/vuln-graphql
+    container_name: vuln-graphql
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - SERVER_PORT=${SERVER_PORT:-3000}
+    ports:
+      - ${SERVER_PORT:-3000}:${SERVER_PORT:-3000}
+    entrypoint:
+      - docker-entrypoint.sh

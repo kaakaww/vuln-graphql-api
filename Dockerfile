@@ -1,16 +1,45 @@
-FROM ubuntu:18.04
-MAINTAINER Aidan Noll (aidan.noll@carvesystems.com)
+FROM centos:8
 
+RUN dnf clean all && \
+	dnf update -y && dnf upgrade -y && \
+	dnf install -y --setopt=install_weak_deps=false \
+		npm \
+		bash \
+		sqlite \
+		python3 \
+		make \
+		automake \
+		gcc \
+		gcc-c++ \
+		git \
+		sqlite
 
-RUN apt-get update && apt-get install -y nodejs npm python3 sqlite3
+# RUN yum module install -y nodejs/development
+
+ENV SERVER_PORT=8081
+
+EXPOSE ${SERVER_PORT}:${SERVER_PORT}
+
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN useradd -m app
+
+COPY --chown=app ./app /graphql
+
+WORKDIR /graphql
+
+RUN npm install sqlite3
+
+RUN npm install
+
+RUN npm run tsc
+
+RUN npm run sequelize db:migrate
+
+RUN npm run sequelize db:seed:all
+
+RUN chown app /graphql
+
 USER app
 
-COPY --chown=app . /home/app/app
-
-RUN cd /home/app/app && npm install sqlite3 && npm install && npm run tsc && npm run sequelize db:migrate && npm run sequelize db:seed:all
-
-EXPOSE 3000/tcp
-
-CMD cd /home/app/app && ./run.sh
+ENTRYPOINT [ "docker-entrypoint.sh" ]
