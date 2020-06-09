@@ -16,7 +16,7 @@ RUN dnf clean all && \
 
 # RUN yum module install -y nodejs/development
 
-ENV SERVER_PORT=8081
+ENV SERVER_PORT=3000
 
 EXPOSE ${SERVER_PORT}:${SERVER_PORT}
 

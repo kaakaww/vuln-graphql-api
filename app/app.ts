@@ -7,8 +7,6 @@ import {db} from './models'
 
 import session from 'express-session';
 
-import rateLimit from 'express-rate-limit';
-
 import cors from 'cors';
 
 
@@ -51,11 +49,6 @@ app.use(GetCurrentUser);
 
 // Set up rate-limiting.
 // We wouldn't want anyone brute-forcing password reset tokens!
-const limiter = rateLimit({
-    windowMs:60 * 1000, // one minute
-    max: 100 // limit to 100 requests/minute
-});
-app.use(limiter);
 
 app.get('/', (_req,res) => {
     return res.redirect('/graphql');
