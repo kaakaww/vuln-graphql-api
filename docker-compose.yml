@@ -6,6 +6,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
+      args:
+        - SERVER_PORT
     environment:
       - SERVER_PORT=${SERVER_PORT:-3000}
     ports:
