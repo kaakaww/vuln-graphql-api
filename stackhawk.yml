@@ -16,4 +16,4 @@ app:
     operation: ALL
     filePath: ""
   hawk:
-    failureThreshold: "High"
+    failureThreshold: High
