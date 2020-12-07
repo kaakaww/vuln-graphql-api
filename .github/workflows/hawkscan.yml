@@ -10,7 +10,7 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v2
       - name: Run GraphAPI
-        run: SERVER_PORT=3000 docker-compose up
+        run: SERVER_PORT=3000 docker-compose up &
       - name: Run HawkScan
         env:
           API_KEY: ${{secrets.HAWK_API_KEY}}
