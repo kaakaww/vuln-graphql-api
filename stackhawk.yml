@@ -1,0 +1,19 @@
+app:
+  applicationId: a919a264-de99-4087-b3b4-5939104caf9f
+  env: Development
+  host: http://localhost:3000
+
+  graphqlConf:
+    enabled: true
+    schemaPath: /graphql
+    requestMethod: POST
+    uriMaxLength: "4000"
+    maxDepth: "7"
+    introspection:
+      requestsPerCycle: "10"
+      requestDelay: "1000"
+    batchQueries: false
+    operation: ALL
+    filePath: ""
+  hawk:
+    failureThreshold: "High"
