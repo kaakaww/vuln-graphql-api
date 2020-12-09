@@ -1,20 +1,8 @@
-FROM centos:8
+FROM node:latest
 
-RUN dnf clean all && \
-	dnf update -y && dnf upgrade -y && \
-	dnf install -y --setopt=install_weak_deps=false \
-		npm \
-		bash \
-		sqlite \
-		python3 \
-		make \
-		automake \
-		gcc \
-		gcc-c++ \
-		git \
-		sqlite
+RUN apt update && apt upgrade -y
 
-RUN yum module install -y nodejs
+# RUN yum module install -y nodejs
 
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
