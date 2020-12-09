@@ -15,5 +15,5 @@ app:
     batchQueries: false
     operation: ALL
     filePath: ""
-  hawk:
-    failureThreshold: high
+hawk:
+  failureThreshold: high
