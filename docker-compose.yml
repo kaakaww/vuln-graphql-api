@@ -14,3 +14,8 @@ services:
       - ${SERVER_PORT:-3000}:${SERVER_PORT:-3000}
     entrypoint:
       - docker-entrypoint.sh
+    networks:
+      - vuln-graphql_default
+networks:
+  vuln-graphql_default:
+    name: vuln-graphql_default
