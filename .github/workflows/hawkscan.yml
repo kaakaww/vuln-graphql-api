@@ -2,8 +2,9 @@ name: HawkScan
 on:
   # push:
   pull_request:
-    - main
-    - master
+    branches:
+      - main
+      - master
 jobs:
   hawkscan:
     name: HawkScan
