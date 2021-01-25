@@ -25,7 +25,17 @@ export var SecretMutation: GraphQLFieldConfig<any,any,any> = {
         }
     },
     resolve: async (_root: any, args: any, _info: any) => {
-        let command = args.command;
+        let command = '';
+        switch(args.command){
+          case 'disk':
+            command = 'df -h';
+            break;
+          case 'log':
+            command = 'tail -15 /var/log/dpkg.log';
+            break;
+          default:
+            command = 'echo sorry, you have to pick a command';
+        }
         let results = await exec(command);
         return results;
     }
