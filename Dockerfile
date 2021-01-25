@@ -1,6 +1,6 @@
 FROM node:latest
 
-RUN apt update && apt upgrade -y
+RUN apt update && apt upgrade -y && apt-get install -y sqlite3
 
 # RUN yum module install -y nodejs
 
