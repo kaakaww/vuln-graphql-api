@@ -15,7 +15,7 @@ export var CreatePost: GraphQLFieldConfig<any,any,any> = {
         public: {
             type: GraphQLBoolean,
             // default to making our posts public.
-            defaultValue: true
+            defaultValue: false
         }
     },
     resolve: async (_root: any, args: any, context: any) => {
