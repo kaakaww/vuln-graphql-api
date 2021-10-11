@@ -1,4 +1,4 @@
-name: HawkScan
+name: Build and Scan
 on:
   # push:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - master
 jobs:
   hawkscan:
-    name: HawkScan
+    name: Build and Scan
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
