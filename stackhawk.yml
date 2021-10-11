@@ -1,19 +1,12 @@
 app:
-  applicationId: ${APP_ID:a919a264-de99-4087-b3b4-5939104caf9f}
-  env: Development
-  host: http://localhost:3000
-
+  applicationId: a0a0cc10-2f2e-4554-87f5-7ec3f4c52a6f # (required)
+  env: Development # (required)
+  host: http://localhost:3000 # (required)
   graphqlConf:
     enabled: true
-    schemaPath: /graphql
-    requestMethod: POST
-    uriMaxLength: "4000"
-    maxDepth: "7"
-    introspection:
-      requestsPerCycle: "10"
-      requestDelay: "1000"
-    batchQueries: false
-    operation: ALL
-    filePath: ""
+  autoPolicy: true
+  autoInputVectors: true
+
 hawk:
-  failureThreshold: high
+  spider:
+    base: false

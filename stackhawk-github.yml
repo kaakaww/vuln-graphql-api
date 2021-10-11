@@ -1,3 +1,0 @@
-app:
-  env: GitHub
-  host: http://vuln-graphql:3000

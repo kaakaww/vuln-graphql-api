@@ -1,27 +1,18 @@
 name: Build and Scan
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-      - master
 jobs:
   hawkscan:
     name: Build and Scan
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Clone repo
         uses: actions/checkout@v2
-      - name: Docker Build
-        run: SERVER_PORT=3000 docker-compose build
-      - name: Run GraphAPI
-        run: SERVER_PORT=3000 docker-compose up -d
+      - name: Build and run vuln-graphql-api
+        run: |
+          export SERVER_PORT=3000
+          docker-compose up --build --detach
       - name: Run HawkScan
-        env:
-          API_KEY: ${{secrets.HAWK_API_KEY}}
-        run: >
-          docker run -v $(pwd):/hawk -t --network vuln-graphql_default
-          -e API_KEY="${API_KEY}"
-          stackhawk/hawkscan stackhawk.yml stackhawk-github.yml
+        uses: stackhawk/hawkscan-action@v1.3.1
+        with:
+          apiKey: ${{ secrets.HAWK_API_KEY }}
