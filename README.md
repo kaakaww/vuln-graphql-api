@@ -8,6 +8,11 @@ This fork of [vulnerable-graphql-api](https://github.com/CarveSystems/vulnerable
 - Set `SERVER_PORT` in the environment and run `docker-compose up`
 
 ```bash
-export SERVER_PORT=3000
 docker-compose up
+```
+
+By default, the app will listen on port 3000.
+
+```bash
+open http://localhost:3000
 ```
