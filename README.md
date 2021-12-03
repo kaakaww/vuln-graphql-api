@@ -16,3 +16,11 @@ By default, the app will listen on port 3000.
 ```bash
 open http://localhost:3000
 ```
+
+## GitHub Actions Workflow
+
+A sample GitHub Actions workflow is available at `stackhawk.d/.github/workflows/build-and-scan.yml`. Move it to the standard location in `.github/workflows` to enable it.
+
+## StackHawk Example Configurations
+
+Sample StackHawk configuration files are available under `stackhawk.d`.
