@@ -30,6 +30,6 @@
     "sequelize-cli": "^5.5.1",
     "sqlite": "^3.0.3",
     "sqlite3": "^4.1.1",
-    "typescript": "^3.4.5"
+    "typescript": "^3.9.10"
   }
 }
