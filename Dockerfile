@@ -14,6 +14,10 @@ RUN sed -i'' -e "s/%SERVER_PORT%/${SERVER_PORT}/g" /graphql/app.ts
 RUN npm install sqlite3
 RUN npm install
 RUN npm run tsc
+# Needed for sequelize to work now
+RUN npm install -g node-pre-gyp \
+    && npm install argon2 --ignore-scripts \
+    && node-pre-gyp rebuild -C ./node_modules/argon2
 RUN npm run sequelize db:migrate
 RUN npm run sequelize db:seed:all
 RUN chown app /graphql
