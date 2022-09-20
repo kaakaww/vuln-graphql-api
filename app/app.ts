@@ -11,7 +11,7 @@ import cors from 'cors';
 
 
 const app = express();
-const port = %SERVER_PORT%;
+const port = process.env.SERVER_PORT || 3000;
 
 app.use(cors());
 
@@ -59,4 +59,5 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }))
 
+console.log(`Starting vulny graphql app on port ${port}`);
 app.listen(port, () => console.log("API started."));
