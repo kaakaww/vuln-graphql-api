@@ -1,4 +1,4 @@
-FROM node:14.12.0-buster
+FROM node:14.19-buster
 
 ARG SERVER_PORT=3000
 ENV SERVER_PORT=${SERVER_PORT}
