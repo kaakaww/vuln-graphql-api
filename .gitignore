@@ -4,3 +4,4 @@ node_modules/
 .idea/
 *.iml
 .env
+/.claude/settings.local.json
