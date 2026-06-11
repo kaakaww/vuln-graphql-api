@@ -1,1 +1,9 @@
-node_modules
+# Keep host build artifacts out of the image build context. These are
+# regenerated inside the container (npm install / tsc / sequelize migrate).
+# Patterns are matched against the context root, so use **/ to also catch
+# app/node_modules and app/build (the COPY source is ./app).
+**/node_modules
+**/build
+db.sqlite
+.git
+Dockerfile.local*

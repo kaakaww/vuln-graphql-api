@@ -2,9 +2,11 @@ FROM node:14.12.0-buster
 
 ARG SERVER_PORT=3000
 ENV SERVER_PORT=${SERVER_PORT}
-EXPOSE ${SERVER_PORT}:${SERVER_PORT}
+EXPOSE ${SERVER_PORT}
 
-RUN apt update && apt upgrade -y
+# NOTE: no `apt upgrade` here. The node:14.12.0-buster base is EOL, so Debian
+# Buster has moved to archive.debian.org and `apt update` fails. This is a
+# deliberately-vulnerable app anyway -- we do not want to patch the OS packages.
 RUN useradd -m app
 COPY --chown=app ./app /graphql
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
